@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO: core ===== -->
+<title>The Modern Worldly Curiosity Shop | reallifetalkblog.com</title>
+<meta name="description" content="A cash-only curiosity shop, collection only. Browse what's currently for sale and get in touch to arrange pickup.">
+<link rel="canonical" href="https://reallifetalkblog.com/">
+
+<!-- ===== SEO: Open Graph (Facebook, etc) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="reallifetalkblog.com">
+<meta property="og:title" content="The Modern Worldly Curiosity Shop">
+<meta property="og:description" content="A cash-only curiosity shop, collection only.">
+<meta property="og:url" content="https://reallifetalkblog.com/">
+<meta property="og:image" content="https://reallifetalkblog.com/og-image.jpg">
+
+<!-- ===== SEO: Twitter/X card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Modern Worldly Curiosity Shop">
+<meta name="twitter:description" content="Dispatches and odd objects, no algorithm, cash on collection.">
+<meta name="twitter:image" content="https://reallifetalkblog.com/og-image.jpg">
+
+<!-- ===== SEO: structured data so Google understands this is a blog + shop ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "reallifetalkblog.com",
+  "url": "https://reallifetalkblog.com/",
+  "description": "A cash-only curiosity shop, collection only.",
+  "author": {
+    "@type": "Person",
+    "name": "Genre Fluid"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#161412;
+    --paper:#F2EFE4;
+    --red:#C8443E;
+    --moss:#5B6B4E;
+    --stamp:#8A8470;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);font-family:Georgia,serif;color:var(--ink);}
+  a{color:inherit;}
+  header{
+    border-bottom:3px solid var(--ink);
+    padding:30px 20px 18px;
+    text-align:center;
+    background:var(--paper);
+    position:sticky;
+    top:0;
+    z-index:5;
+  }
+  .eyebrow{
+    font-family:'Courier New',monospace;
+    font-size:11px;
+    letter-spacing:.25em;
+    color:var(--stamp);
+    margin:0 0 6px;
+    text-transform:uppercase;
+  }
+  h1{
+    font-family:'Oswald','Arial Narrow',sans-serif;
+    text-transform:uppercase;
+    font-size:clamp(28px,6vw,44px);
+    letter-spacing:.01em;
+    margin:0 0 4px;
+    line-height:1;
+  }
+  .tagline{
+    font-style:italic;
+    font-size:14px;
+    color:var(--stamp);
+    margin:8px 0 0;
+  }
+  nav{display:flex;justify-content:center;gap:8px;margin-top:18px;flex-wrap:wrap;}
+  .spotify-embed{max-width:420px;margin:20px auto 0;}
+  nav a{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:.05em;
+    padding:7px 14px;
+    border:1px solid var(--ink);
+    text-decoration:none;
+    display:inline-block;
+  }
+  nav a.active{background:var(--ink);color:var(--paper);}
+
+  main{padding-bottom:60px;}
+
+  article.post{max-width:560px;margin:48px auto;padding:0 22px;}
+  article.post .date{
+    font-family:'Courier New',monospace;
+    font-size:12px;letter-spacing:.08em;color:var(--stamp);
+    margin:0 0 6px;text-transform:uppercase;
+  }
+  article.post h2{
+    font-family:'Oswald','Arial Narrow',sans-serif;
+    text-transform:uppercase;font-size:28px;line-height:1.1;
+    letter-spacing:.01em;margin:0 0 14px;
+  }
+  article.post p{font-size:16.5px;line-height:1.65;margin:0;}
+
+  .item{
+    position:relative;
+    background:#FBFAF4;
+    border:1px solid var(--ink);
+    padding:22px 20px 20px;
+    margin:44px auto;
+    max-width:480px;
+    box-shadow:3px 5px 0 rgba(22,20,18,.08);
+  }
+  .item.rot-a{transform:rotate(-1.4deg);}
+  .item.rot-b{transform:rotate(1.6deg);}
+  .tape{
+    position:absolute;top:-10px;left:10%;width:70px;height:22px;
+    background:rgba(242,239,228,.55);
+    border:1px solid rgba(22,20,18,.12);
+    transform:rotate(-8deg);
+    box-shadow:0 1px 2px rgba(0,0,0,.15);
+  }
+  .item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .item h3{
+    font-family:'Oswald','Arial Narrow',sans-serif;
+    text-transform:uppercase;letter-spacing:.02em;
+    font-size:20px;margin:0;line-height:1.15;
+  }
+  .price{
+    font-family:'Courier New',monospace;font-size:18px;font-weight:700;
+    white-space:nowrap;border:1.5px dashed var(--ink);padding:2px 7px;
+    transform:rotate(3deg);
+  }
+  .condition{
+    font-family:'Courier New',monospace;font-size:12px;color:var(--stamp);
+    margin:6px 0 10px;font-style:italic;
+  }
+  .desc{font-size:15px;line-height:1.5;margin:0 0 14px;}
+  .status-row{display:flex;align-items:center;justify-content:space-between;}
+  .tag{
+    font-family:'Courier New',monospace;font-size:11px;font-weight:700;
+    letter-spacing:.08em;padding:3px 8px;color:var(--paper);
+    transform:rotate(-1.5deg);border:1px solid var(--ink);display:inline-block;
+  }
+  .tag.available{background:var(--red);}
+  .tag.reserved{background:var(--moss);}
+  .tag.gone{background:var(--stamp);}
+  .cta{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:13px;
+    letter-spacing:.05em;background:var(--ink);color:var(--paper);
+    border:none;padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-block;
+  }
+  .unavailable-note{
+    font-family:'Courier New',monospace;font-size:12px;color:var(--stamp);margin-top:10px;
+  }
+
+  footer{
+    border-top:3px solid var(--ink);
+    padding:24px 20px 40px;
+    text-align:center;
+  }
+  footer p{
+    font-family:'Courier New',monospace;font-size:12px;color:var(--stamp);margin:0;
+  }
+
+  button:focus-visible, a:focus-visible{outline:3px solid var(--red);outline-offset:1px;}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">reallifetalkblog.com</p>
+  <h1>The Modern Worldly<br>Curiosity Shop</h1>
+  <p class="tagline">cash-only curiosity shop, collection only</p>
+  <nav>
+    <a href="#" class="active">Everything</a>
+    <a href="#dispatches">Dispatches</a>
+    <a href="#shop">Shop</a>
+  </nav>
+  <div class="spotify-embed">
+    <iframe
+      style="border-radius:8px"
+      src="https://open.spotify.com/embed/track/7ceZcPIitRCjo6i5b7ioD3?utm_source=generator&theme=0"
+      width="100%"
+      height="152"
+      frameborder="0"
+      allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+      title="FUNEMPLOYED by Andy Goodwin on Spotify">
+    </iframe>
+  </div>
+</header>
+
+<main>
+
+  <div class="item rot-a" id="item-001">
+    <div class="tape" style="left:12%;"></div>
+    <div class="item-top">
+      <h3>[Item name]</h3>
+      <span class="price">£0</span>
+    </div>
+    <p class="condition">condition: [condition — e.g. new, used, well-loved]</p>
+    <p class="desc">[Short description of the item, what it is, why it's worth having.]</p>
+    <div class="status-row">
+      <span class="tag available">FOR SALE</span>
+      <a class="cta" href="mailto:hello@reallifetalkblog.com?subject=Item%20enquiry">I want this →</a>
+    </div>
+  </div>
+
+  <article class="post" id="post-001">
+    <p class="date">2026-06-19</p>
+    <h2>[Post title]</h2>
+    <p>[Write here.]</p>
+  </article>
+
+  <div class="item rot-b" id="item-002">
+    <div class="tape" style="left:62%;"></div>
+    <div class="item-top">
+      <h3>[Item name]</h3>
+      <span class="price">£0</span>
+    </div>
+    <p class="condition">condition: [condition]</p>
+    <p class="desc">[Short description.]</p>
+    <div class="status-row">
+      <span class="tag available">FOR SALE</span>
+      <a class="cta" href="mailto:hello@reallifetalkblog.com?subject=Item%20enquiry">I want this →</a>
+    </div>
+  </div>
+
+  <div class="item rot-a" id="item-003">
+    <div class="tape" style="left:12%;"></div>
+    <div class="item-top">
+      <h3>[Item name]</h3>
+      <span class="price">£0</span>
+    </div>
+    <p class="condition">condition: [condition]</p>
+    <p class="desc">[Short description.]</p>
+    <div class="status-row">
+      <span class="tag available">FOR SALE</span>
+      <a class="cta" href="mailto:hello@reallifetalkblog.com?subject=Item%20enquiry">I want this →</a>
+    </div>
+  </div>
+
+  <article class="post" id="post-002">
+    <p class="date">2026-06-19</p>
+    <h2>[Post title]</h2>
+    <p>[Write here.]</p>
+  </article>
+
+  <div class="item rot-b" id="item-004">
+    <div class="tape" style="left:62%;"></div>
+    <div class="item-top">
+      <h3>[Item name]</h3>
+      <span class="price">£0</span>
+    </div>
+    <p class="condition">condition: [condition]</p>
+    <p class="desc">[Short description.]</p>
+    <div class="status-row">
+      <span class="tag available">FOR SALE</span>
+      <a class="cta" href="mailto:hello@reallifetalkblog.com?subject=Item%20enquiry">I want this →</a>
+    </div>
+  </div>
+
+  <div class="item rot-a" id="item-005">
+    <div class="tape" style="left:12%;"></div>
+    <div class="item-top">
+      <h3>[Item name]</h3>
+      <span class="price">£0</span>
+    </div>
+    <p class="condition">condition: [condition]</p>
+    <p class="desc">[Short description.]</p>
+    <div class="status-row">
+      <span class="tag available">FOR SALE</span>
+      <a class="cta" href="mailto:hello@reallifetalkblog.com?subject=Item%20enquiry">I want this →</a>
+    </div>
+  </div>
+
+  <article class="post" id="post-003">
+    <p class="date">2026-06-19</p>
+    <h2>[Post title]</h2>
+    <p>[Write here.]</p>
+  </article>
+
+  <div class="item rot-b" id="item-006">
+    <div class="tape" style="left:62%;"></div>
+    <div class="item-top">
+      <h3>[Item name]</h3>
+      <span class="price">£0</span>
+    </div>
+    <p class="condition">condition: [condition]</p>
+    <p class="desc">[Short description.]</p>
+    <div class="status-row">
+      <span class="tag available">FOR SALE</span>
+      <a class="cta" href="mailto:hello@reallifetalkblog.com?subject=Item%20enquiry">I want this →</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>everything here is real, cash only, collection only — message on any item to arrange</p>
+</footer>
+
+</body>
+</html>
