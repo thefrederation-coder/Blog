@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me talking about random shit</title>
+    
+    <meta name="description" content="Unfiltered logs, raw thoughts, and late-night transmissions.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/">
+
+    <meta property="og:title" content="Me talking about random shit">
+    <meta property="og:description" content="Unfiltered logs, raw thoughts, and late-night transmissions.">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --term-bg: #050505;
+            --term-glow: #00ff66;
+            --term-dim: #008833;
+            --term-border: #113311;
+        }
+
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: var(--term-bg);
+            color: var(--term-glow);
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+            text-shadow: 0 0 3px rgba(0, 255, 102, 0.4);
+        }
+
+        header {
+            border-bottom: 1px dashed var(--term-dim);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.sub {
+            color: var(--term-dim);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .terminal-stream {
+            border: 1px solid var(--term-border);
+            background: #000;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        .log-entry {
+            margin-bottom: 25px;
+        }
+
+        .timestamp {
+            color: var(--term-dim);
+            font-size: 0.8rem;
+        }
+
+        h2 {
+            font-size: 1rem;
+            margin: 5px 0 10px 0;
+            color: var(--term-glow);
+        }
+
+        h2::before {
+            content: "> ";
+        }
+
+        p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: #ccffcc;
+        }
+
+        footer {
+            border-top: 1px dashed var(--term-dim);
+            padding-top: 15px;
+            font-size: 0.75rem;
+            color: var(--term-dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a {
+            color: var(--term-dim);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--term-glow);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>// SYSTEM LOG: ROOT FEED</h1>
+        <p class="sub">HOST: REALLIFETALKBLOG.COM // STATUS: TRANSMITTING</p>
+    </header>
+
+    <main class="terminal-stream">
+        <article class="log-entry">
+            <span class="timestamp">[2026-08-30 01:33:50 UTC]</span>
+            <h2>Transmission Start</h2>
+            <p>Clearing out the noise, stripping the excess overhead, and putting thoughts directly where they belong on the open web.</p>
+        </article>
+
+        <article class="log-entry">
+            <span class="timestamp">[2026-08-28 22:14:02 UTC]</span>
+            <h2>On Raw Infrastructure</h2>
+            <p>If a network node doesn't load instantly and look like a direct data feed, it has too many moving parts. Plain text always wins.</p>
+        </article>
+    </main>
+
+    <footer>
+        <span>[PACKET_OK]</span>
+        <span><a href="robots.txt">ROBOTS.TXT</a></span>
+    </footer>
+
+</body>
+</html>
