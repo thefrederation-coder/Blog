@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate for Cash-on-Collection | reallifetalkblog.com</title>
+    <meta name="description" content="Official candidate manifesto for uncompromised local trade and physical banknotes.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/seller.html">
+    
+    <meta property="og:title" content="Candidate for Cash-on-Collection | reallifetalkblog.com">
+    <meta property="og:description" content="Official candidate manifesto for uncompromised local trade and physical banknotes.">
+    <meta property="og:url" content="https://reallifetalkblog.com/seller.html">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --gov-black: #0b0c0c;
+            --ikea-blue: #0051ba;
+            --ikea-yellow: #ffcc00;
+            --bg-color: #f3f2f1;
+            --text-color: #0b0c0c;
+            --ballot-red: #d5281b;
+            --wood-tone: #8B5A2B;
+            --wood-dark: #5c3a21;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Outgoing Cabinet Door Transition Overlay */
+        .cabinet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            z-index: 999;
+            pointer-events: none;
+            visibility: hidden;
+        }
+        .cabinet-door {
+            width: 50vw;
+            height: 100vh;
+            background-color: var(--wood-tone);
+            border: 4px solid var(--wood-dark);
+            position: relative;
+            transform: rotateY(0deg);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
+        }
+        .cabinet-door.left {
+            transform-origin: left;
+            border-right: 8px solid var(--wood-dark);
+        }
+        .cabinet-door.right {
+            transform-origin: right;
+            border-left: 8px solid var(--wood-dark);
+        }
+        .cabinet-handle {
+            position: absolute;
+            top: 50%;
+            width: 15px;
+            height: 80px;
+            background: #d4af37;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transform: translateY(-50%);
+        }
+        .left .cabinet-handle { right: 20px; }
+        .right .cabinet-handle { left: 20px; }
+
+        /* Trigger Closing Doors Animation on Exit */
+        body.shut-doors .cabinet-overlay {
+            visibility: visible;
+        }
+        body.shut-doors .cabinet-door.left {
+            transform: rotateY(0deg);
+        }
+        body.shut-doors .cabinet-door.right {
+            transform: rotateY(0deg);
+        }
+
+        .gov-header {
+            background-color: var(--gov-black);
+            color: #fff;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border-bottom: 10px solid var(--ballot-red);
+        }
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #b1b4b6;
+        }
+        .ballot-box {
+            background-color: var(--ballot-red);
+            color: #fff;
+            padding: 15px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+        .slogan {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--ikea-blue);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: var(--gov-black);
+        }
+        h2 {
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--gov-black);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            color: var(--gov-black);
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .candidate-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .candidate-card {
+            background: #f8f8f8;
+            border: 1px solid #b1b4b6;
+            padding: 15px;
+            border-left: 5px solid #777;
+        }
+        .candidate-card.real-candidate {
+            border-left: 5px solid var(--ballot-red);
+            background: #fffdfd;
+            box-shadow: inset 0 0 10px rgba(213, 40, 27, 0.05);
+        }
+        .badge {
+            display: inline-block;
+            background: #666;
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+        .real-candidate .badge {
+            background: var(--ballot-red);
+        }
+
+        .action-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            border-top: 1px solid #b1b4b6;
+            padding-top: 20px;
+        }
+        .nav-btn {
+            display: inline-block;
+            background: var(--gov-black);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-btn:hover {
+            background: #333;
+        }
+        .atm-btn {
+            background: var(--ikea-blue);
+        }
+        .atm-btn:hover {
+            background: #003d8c;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #505a5f;
+            border-top: 1px solid #b1b4b6;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cabinet-overlay">
+        <div class="cabinet-door left">
+            <div class="cabinet-handle"></div>
+        </div>
+        <div class="cabinet-door right">
+            <div class="cabinet-handle"></div>
+        </div>
+    </div>
+
+    <div class="gov-header">
+        OFFICIAL PARLIAMENTARY CATALOGUE // CONSTITUENCY OF UNCOMPROMISED BARTER
+    </div>
+
+    <div class="container">
+        <div class="ballot-box">
+            BALLOT PAPER CATALOGUE REF: FLATPACK-2026
+        </div>
+
+        <div class="slogan">
+            Real talk: You wanna bring back cash on collection right?
+        </div>
+
+        <h1>The Constituency Candidate Catalogue</h1>
+        
+        <p>Review the certified local nominees below. Please note that 99% of entries feature algorithmic proxy loops, invisible handling fees, and digital app middleware. Only one candidate meets strict cash-on-collection requirements.</p>
+
+        <div class="candidate-grid">
+            <div class="candidate-card">
+                <span class="badge">REJECTED: APP DEPENDENT</span>
+                <strong>Lord Algorithmius McApp</strong><br>
+                <em>Platform:</em> Forcing all transactions through an invisible smartphone widget with a non-refundable service fee. Zero vinyl tracking allowed.
+            </div>
+
+            <div class="candidate-card">
+                <span class="badge">REJECTED: VIRTUAL PROXY</span>
+                <strong>Sir Ledger E-Wallet Esq.</strong><br>
+                <em>Platform:</em> Promoting cloud-based automated tenders and digital tokens. Refuses to touch physical banknotes on moral grounds.
+            </div>
+
+            <div class="candidate-card real-candidate">
+                <span class="badge">CERTIFIED AUTHENTIC</span>
+                <strong>The Seller (Your Open-Format Audio Maître D')</strong><br>
+                <em>Platform:</em> Zero digital friction, direct hand-to-hand cash exchange, active furniture restoration, and 24/7 crate-digging enforcement.
+            </div>
+        </div>
+
+        <h2>Why Only One Option Works</h2>
+        <p>When you strip away the flatpack administrative bloat, trading requires a firm handshake and crisp currency notes. No middle-men, no invisible apps.</p>
+
+        <div class="action-nav">
+            <button class="nav-btn" onclick="transitionPage('index.html')">&larr; Return to Main Cabinet</button>
+            <button class="nav-btn atm-btn" onclick="transitionPage('atm.html')">Proceed to ATM Visit &rarr;</button>
+        </div>
+
+        <footer>
+            reallifetalkblog.com &bull; Promoted by The Seller on behalf of the Coalition of Uncompromised Curiosities.
+        </footer>
+    </div>
+
+    <script>
+        function transitionPage(targetUrl) {
+            document.body.classList.add('shut-doors');
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
