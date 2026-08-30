@@ -1,0 +1,250 @@
+<!-- FILE: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1: The Modern Worldly Curiosity Shop // reallifetalkblog.com</title>
+    <meta name="description" content="Welcome to the Modern Worldly Curiosity Shop. Online discovery, offline commerce. Cash only, human interaction.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/">
+
+    <style>
+        :root {
+            --gov-black: #0b0c0c;
+            --ikea-blue: #0051ba;
+            --ikea-yellow: #ffcc00;
+            --ballot-red: #d5281b;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--gov-black);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fullscreen YouTube Transition Overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        .video-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .video-overlay iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            pointer-events: none; /* Prevents clicking on yt branding during transition */
+        }
+
+        .portal-container {
+            text-align: left;
+            max-width: 680px;
+            padding: 40px;
+            background: #1a1c1e;
+            border: 4px solid var(--ikea-yellow);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            z-index: 10;
+            margin: 40px 20px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: var(--ikea-yellow);
+            margin-top: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .tagline {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 25px;
+            background: #2e353b;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 5px solid var(--ikea-yellow);
+        }
+        p {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .manifesto-box {
+            background: #111;
+            border: 2px dashed #555;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        .manifesto-box h3 {
+            margin-top: 0;
+            color: var(--ikea-yellow);
+            font-size: 1.1rem;
+        }
+        .stamp-row {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #2e353b;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+        .badge.yes { border-left: 4px solid #00ab6b; color: #00ab6b; }
+        .badge.no { border-left: 4px solid var(--ballot-red); color: var(--ballot-red); }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .step-item {
+            background: #25282a;
+            padding: 12px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--ikea-blue);
+        }
+        .step-num {
+            color: var(--ikea-yellow);
+            font-weight: bold;
+            font-family: monospace;
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .sub-link {
+            background: #2e353b;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .sub-link:hover {
+            background: #444;
+        }
+
+        .action-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cabinet-btn {
+            background: var(--ikea-blue);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,81,186,0.4);
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .cabinet-btn:hover {
+            background: #003d8c;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- YouTube Transition Overlay -->
+    <div class="video-overlay" id="videoOverlay">
+        <iframe id="ytPlayer" src="" allow="autoplay"></iframe>
+    </div>
+
+    <div class="portal-container">
+        <h1>The Modern Worldly Curiosity Shop</h1>
+        <div class="tagline">🌐 ONLINE DISCOVERY &nbsp;//&nbsp; 🤝 OFFLINE COMMERCE</div>
+        
+        <p>The internet is where you discover the object, watch it being restored, hear its story, see it on the livestream, and claim it. But the actual transaction happens face-to-face between actual human beings.</p>
+
+        <div class="manifesto-box">
+            <h3>💷 WE TAKE CASH. FULL STOP.</h3>
+            <p>This is a deliberately card-free shop. We don't process online checkouts, debit cards, or QR-code payment terminals.</p>
+            
+            <div class="stamp-row">
+                <span class="badge no">CARD MACHINES: ❌</span>
+                <span class="badge yes">CASH ON COLLECTION: ✅</span>
+                <span class="badge yes">HUMAN INTERACTION: ✅</span>
+            </div>
+        </div>
+
+        <h3 style="color: var(--ikea-yellow); font-size: 1.1rem; margin-top: 25px;">HOW IT WORKS</h3>
+        <div class="steps-grid">
+            <div class="step-item"><span class="step-num">01</span><strong>Find:</strong> Browse the collection or watch the live terminal stream.</div>
+            <div class="step-item"><span class="step-num">02</span><strong>Claim:</strong> Type <code>!mine</code> in chat or submit the interest form.</div>
+            <div class="step-item"><span class="step-num">03</span><strong>Arrange:</strong> We coordinate collection details privately.</div>
+            <div class="step-item"><span class="step-num">04</span><strong>Meet &amp; Inspect:</strong> Meet at the agreed public meeting point.</div>
+            <div class="step-item"><span class="step-num">05</span><strong>Exchange:</strong> Hand over exact cash, inspect the treasure, and take it home.</div>
+        </div>
+
+        <div class="action-container">
+            <button class="cabinet-btn" onclick="playCabinetVideo()">OPEN CABINET &amp; ENTER SELLER PAGE &rarr;</button>
+        </div>
+
+        <div class="nav-links">
+            <a href="seller.html" class="sub-link">Direct to Seller Page</a>
+            <a href="atm.html" class="sub-link">Interactive ATM Terminal</a>
+        </div>
+    </div>
+
+    <script>
+        function playCabinetVideo() {
+            const overlay = document.getElementById('videoOverlay');
+            const iframe = document.getElementById('ytPlayer');
+            
+            // Inject the YouTube embed URL with autoplay, controls hidden, and loop enabled
+            iframe.src = "https://www.youtube.com/embed/OK6DQsOsESk?autoplay=1&controls=0&mute=0&loop=1&playlist=OK6DQsOsESk";
+            overlay.classList.add('active');
+            
+            // Since the short is roughly 11 seconds long, transition to seller.html after ~10.5 seconds
+            setTimeout(function() {
+                window.location.href = 'seller.html';
+            }, 10500);
+        }
+    </script>
+
+</body>
+</html>
