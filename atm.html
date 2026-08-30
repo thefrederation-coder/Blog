@@ -1,0 +1,194 @@
+<!-- FILE: atm.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive ATM Terminal // The Modern Worldly Curiosity Shop</title>
+    <meta name="description" content="Official Cash Acquisition Terminal. Locate legal tender before attempting offline commerce.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/atm.html">
+
+    <style>
+        :root {
+            --gov-black: #0b0c0c;
+            --ikea-blue: #0051ba;
+            --ikea-yellow: #ffcc00;
+            --ballot-red: #d5281b;
+            --terminal-green: #00ab6b;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--gov-black);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .terminal-container {
+            width: 100%;
+            max-width: 720px;
+            background: #1a1c1e;
+            border: 4px solid var(--ikea-yellow);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .terminal-header {
+            text-align: center;
+            border-bottom: 2px dashed #444;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 1.6rem;
+            color: var(--ikea-yellow);
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .system-status {
+            font-family: monospace;
+            background: #2e353b;
+            color: var(--terminal-green);
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-left: 4px solid var(--terminal-green);
+        }
+
+        .notice-box {
+            background: #111;
+            border: 2px solid var(--ballot-red);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .notice-box strong {
+            color: var(--ballot-red);
+            text-transform: uppercase;
+        }
+
+        /* Video Wrapper for the YouTube Tutorial */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            background: #000;
+            border: 2px solid #444;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .steps-instruction {
+            background: #25282a;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--ikea-blue);
+        }
+        .steps-instruction h3 {
+            margin-top: 0;
+            color: var(--ikea-yellow);
+            font-size: 1rem;
+        }
+        .steps-instruction ol {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+        .steps-instruction li {
+            margin-bottom: 6px;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: var(--ikea-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+        .nav-btn:hover {
+            background: #003d8c;
+        }
+        .nav-btn.secondary {
+            background: #2e353b;
+        }
+        .nav-btn.secondary:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <h1>Physical Currency Acquisition Unit</h1>
+            <div class="system-status">STATUS: MANDATORY PHYSICAL TENDER REQUIRED</div>
+        </div>
+
+        <div class="notice-box">
+            <strong>⚠️ Protocol Reminder:</strong> The Modern Worldly Curiosity Shop operates strictly on physical paper and metal tokens (British Pounds, £). Because our checkout terminals reject digital inputs, you must extract physical legal tender from an external wall dispenser prior to meeting the seller].
+        </div>
+
+        <div class="steps-instruction">
+            <h3>📖 Field Manual: Operating a Cash Dispenser</h3>
+            <ol>
+                <li>Locate a free-to-use hole-in-the-wall machine (avoid independent stores that levy convenience fees)].</li>
+                <li>Insert your plastic token securely into the reader slot].</li>
+                <li>Enter your secret 4-digit PIN while shielding the keypad from onlookers, 00:00:25].</li>
+                <li>Select the exact amount of £ required for your claimed item and extract your notes, 01:00:12].</li>
+            </ol>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 5px; text-align: center;">Visual Training Aid for Novice Currency Extractors:</p>
+        
+        <!-- Embedded YouTube Cash Machine Tutorial -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/Jxp9SQyykR0" title="How to use a cash machine" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="action-row">
+            <a href="seller.html" class="nav-btn">&larr; Return to Seller Inventory</a>
+            <a href="index.html" class="nav-btn secondary">Back to Portal Entry</a>
+        </div>
+    </div>
+
+</body>
+</html>
