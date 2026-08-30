@@ -1,0 +1,129 @@
+<!-- FILE: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1: The Curiosity Shop Portal // reallifetalkblog.com</title>
+    <meta name="description" content="Welcome to the Modern Worldly Curiosity Shop. Featuring custom wooden door animation leading into candidate profiles.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/">
+
+    <style>
+        :root {
+            --gov-black: #0b0c0c;
+            --ikea-blue: #0051ba;
+            --ikea-yellow: #ffcc00;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--gov-black);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Fullscreen Video Transition Overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-overlay video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        .portal-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: #1a1c1e;
+            border: 4px solid var(--ikea-yellow);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            z-index: 10;
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: var(--ikea-yellow);
+            margin-top: 0;
+        }
+        p {
+            color: #ccc;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .cabinet-btn {
+            background: var(--ikea-blue);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,81,186,0.4);
+            transition: background 0.2s;
+        }
+        .cabinet-btn:hover {
+            background: #003d8c;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Transition Overlay playing your exact cabinet door opening sequence -->
+    <div class="video-overlay" id="videoOverlay">
+        <video id="cabinetVideo" muted playsinline>
+            <source src="1000041369.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <div class="portal-container">
+        <h1>The Modern Worldly Curiosity Shop</h1>
+        <p>Step right through the cabinet doors to access candidate profiles, professional experience records, and live interactive terminals.</p>
+        <button class="cabinet-btn" onclick="playCabinetVideo()">Open Cabinet &amp; Enter Seller Page</button>
+    </div>
+
+    <script>
+        function playCabinetVideo() {
+            const overlay = document.getElementById('videoOverlay');
+            const video = document.getElementById('cabinetVideo');
+            
+            overlay.classList.add('active');
+            video.play();
+
+            video.onended = function() {
+                window.location.href = 'seller.html';
+            };
+        }
+    </script>
+
+</body>
+</html>
