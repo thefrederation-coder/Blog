@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3: Automated CV &amp; Manifesto Terminal // reallifetalkblog.com</title>
+    <meta name="description" content="Automated CV Dispensing Terminal for uncompromised local trade. Page 3 of the cabinet catalogue.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/atm.html">
+
+    <style>
+        :root {
+            --gov-black: #0b0c0c;
+            --ikea-blue: #0051ba;
+            --ikea-yellow: #ffcc00;
+            --bg-color: #f3f2f1;
+            --text-color: #0b0c0c;
+            --ballot-red: #d5281b;
+            --atm-grey: #2e353b;
+            --screen-green: #0f2b1d;
+            --screen-glow: #1b4d3e;
+            --receipt-bg: #fffdf9;
+            --wood-tone: #8B5A2B;
+            --wood-dark: #5c3a21;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Outgoing Cabinet Door Transition Overlay */
+        .cabinet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            z-index: 999;
+            pointer-events: none;
+            visibility: hidden;
+        }
+        .cabinet-door {
+            width: 50vw;
+            height: 100vh;
+            background-color: var(--wood-tone);
+            border: 4px solid var(--wood-dark);
+            position: relative;
+            transform: rotateY(0deg);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
+        }
+        .cabinet-door.left {
+            transform-origin: left;
+            border-right: 8px solid var(--wood-dark);
+        }
+        .cabinet-door.right {
+            transform-origin: right;
+            border-left: 8px solid var(--wood-dark);
+        }
+        .cabinet-handle {
+            position: absolute;
+            top: 50%;
+            width: 15px;
+            height: 80px;
+            background: #d4af37;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            transform: translateY(-50%);
+        }
+        .left .cabinet-handle { right: 20px; }
+        .right .cabinet-handle { left: 20px; }
+
+        body.shut-doors .cabinet-overlay {
+            visibility: visible;
+        }
+        body.shut-doors .cabinet-door.left {
+            transform: rotateY(0deg);
+        }
+        body.shut-doors .cabinet-door.right {
+            transform: rotateY(0deg);
+        }
+
+        .gov-header {
+            background-color: var(--gov-black);
+            color: #fff;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border-bottom: 10px solid var(--ikea-blue);
+        }
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: var(--atm-grey);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            color: #fff;
+        }
+        .page-indicator {
+            background-color: var(--ikea-yellow);
+            color: var(--gov-black);
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-radius: 3px;
+        }
+        .atm-screen {
+            background-color: var(--screen-green);
+            border: 4px solid #111;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: inset 0 0 15px rgba(0,255,100,0.2);
+            min-height: 140px;
+            font-family: monospace;
+            color: #a3ffce;
+            margin-bottom: 25px;
+        }
+        .atm-screen h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #1b4d3e;
+            padding-bottom: 8px;
+        }
+        .action-panel {
+            background: #fff;
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--gov-black);
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            display: inline-block;
+            background: var(--gov-black);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-btn:hover {
+            background: #333;
+        }
+        .dispense-btn {
+            background: var(--ikea-blue);
+            font-size: 1.1rem;
+            padding: 12px 25px;
+        }
+        .dispense-btn:hover {
+            background: #003d8c;
+        }
+
+        /* Dispenser Slot & Sliding CV Receipt Animation */
+        .slot-container {
+            margin-top: 30px;
+            border-top: 2px dashed #b1b4b6;
+            padding-top: 20px;
+            text-align: center;
+        }
+        .slot-slit {
+            width: 80%;
+            height: 12px;
+            background: #111;
+            margin: 0 auto 10px auto;
+            border-radius: 6px;
+            box-shadow: inset 0 3px 5px rgba(0,0,0,0.8);
+            position: relative;
+        }
+        
+        .cv-receipt {
+            background: var(--receipt-bg);
+            border: 1px solid #b1b4b6;
+            width: 85%;
+            margin: 0 auto;
+            padding: 25px;
+            text-align: left;
+            color: #111;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(-150px);
+            opacity: 0;
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+            z-index: 2;
+        }
+        
+        body.dispensing .cv-receipt {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cv-header-anon {
+            border-bottom: 2px solid var(--gov-black);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .cv-header-anon h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+            color: var(--gov-black);
+        }
+        .cv-section {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .cv-section h4 {
+            margin: 0 0 5px 0;
+            font-size: 0.95rem;
+            color: var(--ikea-blue);
+            text-transform: uppercase;
+        }
+        .hire-box {
+            background: #f0f4f8;
+            border: 1px solid var(--ikea-blue);
+            padding: 12px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .hire-btn {
+            display: inline-block;
+            background: var(--ballot-red);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        .hire-btn:hover {
+            background: #b51f14;
+        }
+
+        .action-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Physical Cabinet Doors Overlay for Animated Page Transitions -->
+    <div class="cabinet-overlay">
+        <div class="cabinet-door left">
+            <div class="cabinet-handle"></div>
+        </div>
+        <div class="cabinet-door right">
+            <div class="cabinet-handle"></div>
+        </div>
+    </div>
+
+    <div class="gov-header">
+        AUTOMATED CURRENCY &amp; MANIFESTO TERMINAL // 24/7 SELF-SERVICE
+    </div>
+
+    <div class="container">
+        <div class="page-indicator">CATALOGUE PAGE 3 OF 3</div>
+
+        <div class="atm-screen" id="atmScreenText">
+            <h2>TERMINAL READY [PAGE 3]</h2>
+            <p>&gt; INSERT REQUEST: NON-DOXABLE PROFESSIONAL CREDENTIALS<br>&gt; STATUS: AWAITING USER DISPENSE COMMAND...</p>
+        </div>
+
+        <div class="action-panel">
+            <h1>The Cashless CV Dispenser</h1>
+            <p>Rather than spitting out standard physical tender, this terminal extracts an <strong>anonymised, public-safe CV abstract</strong> directly from the archives. No personal identifiers exposed—just pure operational merit.</p>
+
+            <button class="nav-btn dispense-btn" id="dispenseTrigger" onclick="dispenseCV()">Dispense Anonymised CV Receipt</button>
+
+            <!-- Slot & Sliding Receipt -->
+            <div class="slot-container">
+                <div class="slot-slit"></div>
+                <div class="cv-receipt" id="cvReceipt">
+                    <div class="cv-header-anon">
+                        <h3>CANDIDATE PROFILE: ANONYMISED EXTRACT</h3>
+                        <small>Ref: LOCAL-MEDIA-UPCYCLE-2026 // Twickenham Constituency</small>
+                    </div>
+
+                    <div class="cv-section">
+                        <h4>Core Objective[span_0](start_span)[span_0](end_span)</h4>
+                        <p>Creative Media Production HND graduate seeking active involvement in the film industry, set operations, and hands-on media environments[span_1](start_span)[span_1](end_span). Armed with strong customer relations, flexible hours, and absolute dedication (willing to make the tea!)[span_2](start_span)[span_2](end_span).</p>
+                    </div>
+
+                    <div class="cv-section">
+                        <h4>Selected Experience[span_3](start_span)[span_3](end_span)</h4>
+                        <ul>
+                            <li><strong>Cinema &amp; Retail Host:</strong> Direct customer service, ticketing, till operation, and high-volume visitor management in local entertainment venues[span_4](start_span)[span_4](end_span).</li>
+                            <li><strong>Event Host &amp; Open-Format DJ:</strong> Coordinated public performances, festival stages, and community radio broadcasts across Greater London[span_5](start_span)[span_5](end_span).</li>
+                            <li><strong>Community Workshop &amp; Upcycling:</strong> Active restoration, furniture upcycling, and warehouse organization via regional community schemes[span_6](start_span)[span_6](end_span).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-section">
+                        <h4>Education &amp; Technical Skills[span_7](start_span)[span_7](end_span)</h4>
+                        <p><strong>Qualifications:</strong> HND &amp; HNC in Creative Media Production (West Thames College)[span_8](start_span)[span_8](end_span).<br>
+                        <strong>Skills:</strong> Adobe Creative Suite, Computer Troubleshooting, Basic Raspberry Pi, Media Asset Organisation[span_9](start_span)[span_9](end_span).</p>
+                    </div>
+
+                    <div class="hire-box">
+                        <p style="margin:0 0 5px 0; font-size:0.85rem;"><strong>Want to hire the verified creator?</strong></p>
+                        <p style="margin:0; font-size:0.85rem; color:#555;">Request the full unredacted CV document directly:</p>
+                        <a href="mailto:william@thewindinthewillows.net?subject=Hiring%20Enquiry%20-%20Full%20CV%20Request" class="hire-btn">Email william@thewindinthewillows.net[span_10](start_span)[span_10](end_span)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-footer">
+                <button class="nav-btn" onclick="transitionPage('seller.html')">&larr; Page 2 (Candidate Profile)</button>
+                <button class="nav-btn" onclick="transitionPage('index.html')">Return to Page 1</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function dispenseCV() {
+            const body = document.body;
+            const screen = document.getElementById('atmScreenText');
+            const btn = document.getElementById('dispenseTrigger');
+            
+            if (!body.classList.contains('dispensing')) {
+                screen.innerHTML = `<h2>PROCESSING...</h2><p>&gt; EXTRACTING NON-DOXABLE METADATA...<br>&gt; DISPENSING CV RECEIPT BELOW.</p>`;
+                btn.textContent = "Retract CV Receipt";
+                body.classList.add('dispensing');
+            } else {
+                screen.innerHTML = `<h2>TERMINAL READY [PAGE 3]</h2><p>&gt; INSERT REQUEST: NON-DOXABLE PROFESSIONAL CREDENTIALS<br>&gt; STATUS: AWAITING USER DISPENSE COMMAND...</p>`;
+                btn.textContent = "Dispense Anonymised CV Receipt";
+                body.classList.remove('dispensing');
+            }
+        }
+
+        function transitionPage(targetUrl) {
+            document.body.classList.add('shut-doors');
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
