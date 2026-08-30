@@ -1,0 +1,296 @@
+<!-- FILE: atm.html -->
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive ATM Terminal // The Modern Worldly Curiosity Shop</title>
+    <meta name="description" content="Official Cash Acquisition Terminal. Locate legal tender before attempting offline commerce.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/atm.html">
+
+    <style>
+        /* Authentic UK ATM (LINK Network / GOV.UK hybrid styling) */
+        :root {
+            --gov-black: #0b0c0c;
+            --gov-blue: #1d70b8;
+            --gov-blue-hover: #003078;
+            --gov-border: #b1b4b6;
+            --gov-light-grey: #f3f2f1;
+            --gov-red: #d4351c;
+            --gov-green: #00703c;
+            --gov-green-hover: #005a30;
+            --link-blue: #002244;
+            --link-yellow: #ffcc00;
+            --crt-screen-bg: #001122;
+            --crt-text: #00ff66;
+            --crt-amber: #ffbb00;
+        }
+
+        body {
+            font-family: "GDS Transport", Arial, sans-serif;
+            background-color: var(--gov-black);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Physical UK Cash Machine Casing */
+        .atm-machine {
+            width: 100%;
+            max-width: 720px;
+            background: linear-gradient(145deg, #2b3035, #1a1d20);
+            border: 6px solid #48525c;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 2px 5px rgba(255,255,255,0.15);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        /* UK LINK Header Bar */
+        .atm-brand-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #000;
+            border: 2px solid #333;
+            padding: 12px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .link-logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--link-yellow);
+            letter-spacing: 3px;
+            font-family: monospace;
+        }
+        .atm-status-light {
+            width: 12px;
+            height: 12px;
+            background-color: var(--gov-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gov-green);
+        }
+
+        /* CRT Screen Housing mimicking a real UK ATM display */
+        .screen-housing {
+            background: var(--crt-screen-bg);
+            border: 10px solid #111;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.95), 0 0 15px rgba(0,85,255,0.2);
+            margin-bottom: 25px;
+        }
+
+        .atm-screen-header {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--crt-amber);
+            border-bottom: 1px dashed #1a3355;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .terminal-header {
+            text-align: left;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 1.4rem;
+            color: var(--crt-text);
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: monospace;
+            text-shadow: 0 0 6px rgba(0,255,102,0.4);
+        }
+
+        .system-status {
+            font-family: monospace;
+            background: #002211;
+            color: var(--crt-text);
+            padding: 4px 10px;
+            border-radius: 2px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-left: 4px solid var(--crt-text);
+        }
+
+        .notice-box {
+            background: rgba(212, 53, 28, 0.15);
+            border: 1px solid var(--gov-red);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #ffcccc;
+            font-family: monospace;
+        }
+        .notice-box strong {
+            color: #ff4444;
+            text-transform: uppercase;
+        }
+
+        .steps-instruction {
+            background: rgba(0, 68, 136, 0.2);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gov-blue);
+            font-family: monospace;
+        }
+        .steps-instruction h3 {
+            margin-top: 0;
+            color: var(--link-yellow);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+        .steps-instruction ol {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.85rem;
+            color: #d0e0ff;
+            line-height: 1.6;
+        }
+        .steps-instruction li {
+            margin-bottom: 6px;
+        }
+
+        .video-trigger-card {
+            background: #05080f;
+            border: 1px solid #224466;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .video-trigger-card p {
+            color: #aacccc;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        .watch-btn {
+            background: var(--gov-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 0 #990000;
+            transition: background 0.2s;
+        }
+        .watch-btn:hover {
+            background: #b12b15;
+        }
+
+        /* Physical ATM Action Buttons Panel */
+        .action-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: linear-gradient(to bottom, #eaedf2, #d0d5dd);
+            color: #111;
+            border: 2px solid #88909c;
+            padding: 14px 24px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 0 #98a2b3, inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.1s ease;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        .nav-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #98a2b3, inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        .nav-btn.primary {
+            background: linear-gradient(to bottom, #00cb7f, #00ab6b);
+            color: white;
+            border-color: #00774a;
+            box-shadow: 0 4px 0 #004d30;
+        }
+        .nav-btn.primary:hover {
+            background: linear-gradient(to bottom, #00b06f, #00965d);
+        }
+        .nav-btn.secondary {
+            background: linear-gradient(to bottom, #eaedf2, #d0d5dd);
+            color: #111;
+            border-color: #88909c;
+            box-shadow: 0 4px 0 #98a2b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="atm-machine">
+        <!-- UK LINK ATM Header Bar -->
+        <div class="atm-brand-bar">
+            <div class="link-logo">LINK</div>
+            <div style="font-size: 0.75rem; color: #aaa; font-family: monospace;">SECURE CASH DISPENSER // UK-NET</div>
+            <div class="atm-status-light" title="System Online"></div>
+        </div>
+
+        <!-- CRT Screen Housing -->
+        <div class="screen-housing">
+            <div class="atm-screen-header">TRANSACTION ACTIVE &bull; TERMINAL SECURE</div>
+            
+            <div class="terminal-header">
+                <h1>Physical Currency Acquisition Unit</h1>
+                <div class="system-status">STATUS: MANDATORY PHYSICAL TENDER REQUIRED</div>
+            </div>
+
+            <div class="notice-box">
+                <strong>⚠️ Protocol Reminder:</strong> The Modern Worldly Curiosity Shop operates strictly on physical paper and metal tokens (£). Because our checkout terminals reject digital inputs, you must extract physical legal tender from an external wall dispenser prior to meeting the seller.
+            </div>
+
+            <div class="steps-instruction">
+                <h3>📖 Field Manual: Operating a Cash Dispenser</h3>
+                <ol>
+                    <li>Locate a free-to-use hole-in-the-wall machine (avoid independent stores that levy convenience fees).</li>
+                    <li>Insert your plastic token securely into the reader slot.</li>
+                    <li>Enter your secret 4-digit PIN while shielding the keypad from onlookers, 00:00:25.</li>
+                    <li>Select the exact amount of £ required for your claimed item and extract your notes, 01:00:12.</li>
+                </ol>
+            </div>
+
+            <div class="video-trigger-card">
+                <p><strong>Official Training Broadcast:</strong> Struggling with physical cash hardware? Watch the accredited instructional guide on YouTube.</p>
+                <a href="https://youtu.be/Jxp9SQyykR0" target="_blank" class="watch-btn">▶ Watch Cash Machine Tutorial on YouTube</a>
+            </div>
+        </div>
+
+        <!-- Physical ATM Keypad / Action Buttons -->
+        <div class="action-row">
+            <a href="index.html" class="nav-btn secondary">&larr; Cancel / Return Home</a>
+            <a href="shop-gate.html" class="nav-btn primary">Proceed to Trade Gate &rarr;</a>
+        </div>
+    </div>
+
+</body>
+</html>
