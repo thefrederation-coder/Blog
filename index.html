@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1: The Modern Worldly Curiosity Shop // reallifetalkblog.com</title>
+    <meta name="description" content="Welcome to the Modern Worldly Curiosity Shop. Online discovery, offline commerce. Cash only, human interaction.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://reallifetalkblog.com/">
+
+    <style>
+        /* Authentic GOV.UK Design System Theme */
+        :root {
+            --gov-black: #0b0c0c;
+            --gov-blue: #1d70b8;
+            --gov-blue-hover: #003078;
+            --gov-border: #b1b4b6;
+            --gov-light-grey: #f3f2f1;
+            --gov-red: #d4351c;
+            --gov-green: #00703c;
+            --gov-green-hover: #005a30;
+            --focus-yellow: #ffdd00;
+        }
+
+        body {
+            font-family: "GDS Transport", Arial, sans-serif;
+            background-color: #fff;
+            color: var(--gov-black);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Fullscreen YouTube Transition Overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease;
+        }
+        .video-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .video-overlay iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            pointer-events: none;
+        }
+
+        .portal-container {
+            text-align: left;
+            max-width: 680px;
+            padding: 40px;
+            background: #fff;
+            border: 4px solid var(--gov-black);
+            border-radius: 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 10;
+            margin: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: var(--gov-black);
+            margin-top: 0;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: -0.5px;
+            font-weight: 700;
+            border-bottom: 5px solid var(--gov-blue);
+            padding-bottom: 15px;
+        }
+        .tagline {
+            text-align: left;
+            font-size: 1.05rem;
+            color: var(--gov-black);
+            font-weight: 700;
+            margin-bottom: 25px;
+            background: var(--gov-light-grey);
+            padding: 12px 15px;
+            border-radius: 0;
+            border-left: 5px solid var(--gov-blue);
+        }
+        p {
+            color: var(--gov-black);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .manifesto-box {
+            background: var(--gov-light-grey);
+            border: 2px solid var(--gov-border);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0;
+        }
+        .manifesto-box h3 {
+            margin-top: 0;
+            color: var(--gov-black);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .stamp-row {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 0;
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: monospace;
+            border: 1px solid var(--gov-border);
+        }
+        .badge.yes { border-left: 4px solid var(--gov-green); color: var(--gov-green); }
+        .badge.no { border-left: 4px solid var(--gov-red); color: var(--gov-red); }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .step-item {
+            background: var(--gov-light-grey);
+            padding: 12px 15px;
+            border-radius: 0;
+            font-size: 0.95rem;
+            border-left: 4px solid var(--gov-blue);
+            color: var(--gov-black);
+        }
+        .step-num {
+            color: var(--gov-blue);
+            font-weight: 700;
+            font-family: monospace;
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .sub-link {
+            background: var(--gov-light-grey);
+            color: var(--gov-blue);
+            padding: 8px 15px;
+            border-radius: 0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 1px solid var(--gov-border);
+            transition: background 0.2s;
+        }
+        .sub-link:hover {
+            background: #e2e2e2;
+            color: var(--gov-blue-hover);
+            text-decoration: underline;
+        }
+
+        .action-container {
+            text-align: left;
+            margin-top: 30px;
+        }
+        .cabinet-btn {
+            background: var(--gov-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 0;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+            box-shadow: 0 3px 0 var(--gov-green-hover);
+            transition: background 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+        .cabinet-btn:hover {
+            background: var(--gov-green-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-overlay" id="videoOverlay">
+        <iframe id="ytPlayer" src="https://www.youtube.com/embed/OK6DQsOsESk?enablejsapi=1&autoplay=0&controls=0&mute=0&loop=1&playlist=OK6DQsOsESk" allow="autoplay; encrypted-media"></iframe>
+    </div>
+
+    <div class="portal-container">
+        <h1>The Modern Worldly Curiosity Shop</h1>
+        <div class="tagline">🌐 ONLINE DISCOVERY &nbsp;//&nbsp; 🤝 OFFLINE COMMERCE</div>
+        
+        <p>The internet is where you discover the object, watch it being restored, hear its story, see it on the livestream, and claim it. But the actual transaction happens face-to-face between actual human beings.</p>
+
+        <div class="manifesto-box">
+            <h3>💷 WE TAKE CASH. FULL STOP.</h3>
+            <p>This is a deliberately card-free shop. We don't process online checkouts, debit cards, or QR-code payment terminals.</p>
+            
+            <div class="stamp-row">
+                <span class="badge no">CARD MACHINES: ❌</span>
+                <span class="badge yes">CASH ON COLLECTION: ✅</span>
+                <span class="badge yes">HUMAN INTERACTION: ✅</span>
+            </div>
+        </div>
+
+        <h3 style="color: var(--gov-black); font-size: 1.2rem; margin-top: 25px; font-weight: 700;">HOW IT WORKS</h3>
+        <div class="steps-grid">
+            <div class="step-item"><span class="step-num">01</span><strong>Find:</strong> Browse the collection or watch the live terminal stream.</div>
+            <div class="step-item"><span class="step-num">02</span><strong>Claim:</strong> Type <code>!mine</code> in chat or submit the interest form.</div>
+            <div class="step-item"><span class="step-num">03</span><strong>Arrange:</strong> We coordinate collection details privately.</div>
+            <div class="step-item"><span class="step-num">04</span><strong>Meet &amp; Inspect:</strong> Meet at the agreed public meeting point.</div>
+            <div class="step-item"><span class="step-num">05</span><strong>Exchange:</strong> Hand over exact cash, inspect the treasure, and take it home.</div>
+        </div>
+
+        <div class="action-container">
+            <button class="cabinet-btn" onclick="playCabinetVideo()">OPEN CABINET &amp; ENTER SELLER PAGE &rarr;</button>
+        </div>
+
+        <div class="nav-links">
+            <a href="seller.html" class="sub-link">Direct to Seller Page</a>
+            <a href="atm.html" class="sub-link">Interactive ATM Terminal</a>
+        </div>
+    </div>
+
+    <script>
+        function playCabinetVideo() {
+            const overlay = document.getElementById('videoOverlay');
+            const iframe = document.getElementById('ytPlayer');
+            
+            // Activate the fullscreen overlay view immediately
+            overlay.classList.add('active');
+            
+            // Force-refresh the iframe source with autoplay enabled upon click
+            iframe.src = "https://www.youtube.com/embed/OK6DQsOsESk?enablejsapi=1&autoplay=1&controls=0&mute=0&loop=1&playlist=OK6DQsOsESk";
+
+            // Redirect to seller.html after the short finishes (~10.5 seconds)
+            setTimeout(function() {
+                window.location.href = 'seller.html';
+            }, 10500);
+        }
+    </script>
+
+</body>
+</html>
